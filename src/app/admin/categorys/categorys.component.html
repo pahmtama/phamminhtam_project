@@ -1,0 +1,45 @@
+<div class="container-fluid mt-3 m-2">
+  <div class="card text-white shadow">
+    <div class="card-header bg-success">Danh mục sản phẩm
+      <button class="btn btn-primary float-right" (click)="addCategory()">
+        Thêm danh mục
+      </button>
+    </div>
+    <div class="card-body text-dark">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of displayedCategorys">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.createdAt | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="editCategory(category)">
+                Sửa
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteCategory(category)">
+                Xóa
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">
+          Prev
+        </button>
+        <span>{{ currentPage }}</span>
+        <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

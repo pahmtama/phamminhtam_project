@@ -1,0 +1,14 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="bread">
+          <span><a href="/home">Home</a></span> /
+          <span *ngIf="breadcrumb.length >0">
+            {{ breadcrumb[0] }}  -  {{ breadcrumb[1] }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

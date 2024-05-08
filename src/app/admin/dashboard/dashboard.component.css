@@ -1,0 +1,10 @@
+.user-info {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+}

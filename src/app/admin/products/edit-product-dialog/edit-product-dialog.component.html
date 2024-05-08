@@ -1,0 +1,39 @@
+<form [formGroup]="productForm" (ngSubmit)="save()" class="row g-3 needs-validation">
+  <div class="col-md-12">
+    <label for="" class="form-label">Tên sản phẩm</label>
+    <input type="text" formControlName="name" class="form-control"  required />
+    <span class="text-danger" *ngIf="productForm.get('name').errors?.required && productForm.get('name').touched">Vui lòng nhập tên sản phẩm</span>
+  </div>
+  <div class="col-md-12">
+    <label for="" class="form-label">Mô tả</label>
+    <textarea class="form-control" formControlName="description" rows="3" ></textarea>
+    <span class="text-danger" *ngIf="productForm.get('description').errors?.maxLength && productForm.get('description').touched">Mô tả không quá 500 ký tự</span>
+  </div>
+  <div class="col-md-6">
+    <label for="" class="form-label">Giá</label>
+    <input type="number" formControlName="price" class="form-control"  required />
+    <span class="text-danger" *ngIf="productForm.get('price').errors?.required && productForm.get('price').touched">Vui lòng nhập giá sản phẩm</span>
+  </div>
+
+  <div class="col-md-6">
+    <label for="" class="form-label">Ảnh</label>
+    <input type="text" formControlName="image" class="form-control"  required />
+    <span class="text-danger" *ngIf="productForm.get('image').errors?.required && productForm.get('image').touched">Vui lòng chọn ảnh</span>
+  </div>
+  <!-- Category -->
+<div class="col-md-6">
+  <label for="" class="form-label">Danh mục</label>
+  <select formControlName="category" class="form-control" required>
+    <option value="">Chọn danh mục</option>
+    <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+  </select>
+  <span class="text-danger" *ngIf="productForm.get('category').errors?.required && productForm.get('category').touched">Vui lòng chọn danh mục</span>
+</div>
+
+
+
+  <div class="col-12 mt-2 ">
+    <button class="btn btn-success" type="submit">Save</button>
+    <button class="btn btn-danger" (click)="close()" type="button">Close</button>
+  </div>
+</form>

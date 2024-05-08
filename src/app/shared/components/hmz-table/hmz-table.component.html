@@ -1,0 +1,14 @@
+<table class="table table-hover text-dark">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{ column.label }}</th>
+    </tr>
+  </thead>
+  <tbody #tableBody>
+
+  </tbody>
+</table>
+<!-- Phân trang -->
+<mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize"
+  [length]="totalItems" (page)="onPageChange($event)">
+</mat-paginator>

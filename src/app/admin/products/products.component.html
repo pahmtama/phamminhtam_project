@@ -1,0 +1,53 @@
+<div class="container-fluid mt-3 m-2">
+  <div class="card text-white shadow">
+    <div class="card-header bg-success">Danh sách sản phẩm
+      <button class="btn btn-primary float-right" (click)="addProduct()">
+        Thêm sản phẩm
+      </button>
+    </div>
+    <div class="card-body text-dark">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Hình</th>
+            <th scope="col">ID</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Danh mục</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of displayedProducts">
+            <td>
+              <img [src]="product.image" alt="Product Image" width="50" height="50">
+            </td>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price | currency:'VND' }}</td>
+            <td>{{ product.categoryName }}</td>
+            <td>{{ product.createdAt | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="editProduct(product)">
+                Sửa
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">
+                Xóa
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">
+          Prev
+        </button>
+        <span>{{ currentPage }}</span>
+        <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
